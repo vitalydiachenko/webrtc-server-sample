@@ -1,0 +1,10 @@
+{
+  "name": "webrtc-server-sample",
+  "version": "1.0.0",
+  "description": "Koa.js based server for WebRTC web application",
+  "main": "build/index.js",
+  "repository": "https://github.com/vitalydiachenko/webrtc-server-sample",
+  "author": "Vitaly Diachenko <v.di4chenko@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
