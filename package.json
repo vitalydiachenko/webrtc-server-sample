@@ -19,6 +19,7 @@
     "watch-ts": "yarn prebuild && tsc -w"
   },
   "devDependencies": {
+    "@types/koa": "^2.11.2",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^13.9.1",
     "nodemon": "^2.0.2",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "koa": "^2.11.0",
     "module-alias": "^2.2.2"
   }
 }
