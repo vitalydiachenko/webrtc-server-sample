@@ -1,4 +1,6 @@
 import './startup';
 
-// tslint:disable-next-line:no-console
-console.log('Worked!');
+import { HOST, PORT } from 'consts';
+import server from 'server';
+
+server.listen(PORT, HOST);
