@@ -1,6 +1,8 @@
 import './startup';
 
 import { HOST, PORT } from 'consts';
-import server from 'server';
+import Server from 'Server';
+
+const server = new Server();
 
 server.listen(PORT, HOST);
