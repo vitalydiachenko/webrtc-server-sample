@@ -58,6 +58,13 @@ class Server {
           socket: socket.id,
         });
       });
+
+      socket.on(SocketEvent.MakeAnswer, ({ to, answer }) => {
+        socket.to(to).emit(SocketEvent.AnswerMade, {
+          answer,
+          socket: socket.id,
+        });
+      });
     });
   }
 
