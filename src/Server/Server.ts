@@ -51,6 +51,13 @@ class Server {
           user: socket.id,
         });
       });
+
+      socket.on(SocketEvent.CallUser, ({ to, offer }) => {
+        socket.to(to).emit(SocketEvent.CallMade, {
+          offer,
+          socket: socket.id,
+        });
+      });
     });
   }
 
