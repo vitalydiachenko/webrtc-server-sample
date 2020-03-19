@@ -53,17 +53,29 @@ class Server {
       });
 
       socket.on(SocketEvent.CallUser, ({ to, offer }) => {
+        // tslint:disable-next-line:no-console
+        console.log(`Received '${SocketEvent.CallUser}' from '${socket.id}'`);
+
         socket.to(to).emit(SocketEvent.CallMade, {
           offer,
           socket: socket.id,
         });
+
+        // tslint:disable-next-line:no-console
+        console.log(`Sent '${SocketEvent.CallMade}' to '${to}'`);
       });
 
       socket.on(SocketEvent.MakeAnswer, ({ to, answer }) => {
+        // tslint:disable-next-line:no-console
+        console.log(`Received '${SocketEvent.MakeAnswer}' from '${socket.id}'`);
+
         socket.to(to).emit(SocketEvent.AnswerMade, {
           answer,
           socket: socket.id,
         });
+
+        // tslint:disable-next-line:no-console
+        console.log(`Sent '${SocketEvent.AnswerMade}' to '${to}'`);
       });
     });
   }
