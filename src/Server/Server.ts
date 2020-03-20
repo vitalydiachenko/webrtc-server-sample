@@ -54,7 +54,7 @@ class Server {
 
       socket.on(SocketEvent.CallUser, ({ to, offer }) => {
         // tslint:disable-next-line:no-console
-        console.log(`Received '${SocketEvent.CallUser}' from '${socket.id}'`);
+        console.log('\x1b[34m', `Received '${SocketEvent.CallUser}' from '${socket.id}'`);
 
         socket.to(to).emit(SocketEvent.CallMade, {
           offer,
@@ -62,12 +62,12 @@ class Server {
         });
 
         // tslint:disable-next-line:no-console
-        console.log(`Sent '${SocketEvent.CallMade}' to '${to}'`);
+        console.log('\x1b[32m', `Sent '${SocketEvent.CallMade}' to '${to}'`);
       });
 
       socket.on(SocketEvent.MakeAnswer, ({ to, answer }) => {
         // tslint:disable-next-line:no-console
-        console.log(`Received '${SocketEvent.MakeAnswer}' from '${socket.id}'`);
+        console.log('\x1b[34m', `Received '${SocketEvent.MakeAnswer}' from '${socket.id}'`);
 
         socket.to(to).emit(SocketEvent.AnswerMade, {
           answer,
@@ -75,7 +75,20 @@ class Server {
         });
 
         // tslint:disable-next-line:no-console
-        console.log(`Sent '${SocketEvent.AnswerMade}' to '${to}'`);
+        console.log('\x1b[32m', `Sent '${SocketEvent.AnswerMade}' to '${to}'`);
+      });
+
+      socket.on(SocketEvent.SendIceCandidate, ({ to, candidate }) => {
+        // tslint:disable-next-line:no-console
+        console.log('\x1b[34m', `Received '${SocketEvent.SendIceCandidate}' from '${socket.id}'`);
+
+        socket.to(to).emit(SocketEvent.IceReceived, {
+          candidate,
+          socket: socket.id,
+        });
+
+        // tslint:disable-next-line:no-console
+        console.log('\x1b[32m', `Sent '${SocketEvent.IceReceived}' to '${to}'`);
       });
     });
   }
