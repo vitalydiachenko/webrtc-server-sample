@@ -90,6 +90,16 @@ class Server {
         // tslint:disable-next-line:no-console
         console.log('\x1b[32m', `Sent '${SocketEvent.IceReceived}' to '${to}'`);
       });
+
+      socket.on(SocketEvent.EndCall, ({ to }) => {
+        // tslint:disable-next-line:no-console
+        console.log('\x1b[34m', `Received '${SocketEvent.EndCall}' from '${socket.id}'`);
+
+        socket.to(to).emit(SocketEvent.CallEnded);
+
+        // tslint:disable-next-line:no-console
+        console.log('\x1b[32m', `Sent '${SocketEvent.CallEnded}' to '${to}'`);
+      });
     });
   }
 
